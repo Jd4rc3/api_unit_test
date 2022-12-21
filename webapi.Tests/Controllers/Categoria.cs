@@ -65,7 +65,7 @@ namespace WebApi.Test.Controllers
                 Id = 1,
                 Categoria_nombre = "Categoria 1",
                 Subcategorias = new List<SubCategoriaDTO>()
-            }); ;
+            });
 
             var controller = new CategoriaController(mockService.Object);
 
@@ -77,5 +77,61 @@ namespace WebApi.Test.Controllers
             Assert.Equal(200, okResult.StatusCode);
             Assert.IsType<OkObjectResult>(result);
         }
+
+        public async Task ObtenerCategoria()
+        {
+            mockService.Setup(c => c.ObtenerCategoria(1)).ReturnsAsync(new CategoriaDTO
+            {
+                Id = 1,
+                Categoria_nombre = "Categoria 1"
+            });
+
+            var controller = new CategoriaController(mockService.Object);
+
+            var result = await controller.ObtenerCategoria(1);
+
+            Assert.IsType<OkObjectResult>(result);
+        }
+
+        [Fact]
+        public async Task ObtenerCategorias()
+        {
+            mockService.Setup(c => c.ObtenerCategorias()).ReturnsAsync(new List<CategoriaDTO>
+            {
+                new CategoriaDTO
+                {
+                    Id = 1,
+                    Categoria_nombre = "Categoria 1"
+                },
+                new CategoriaDTO
+                {
+                    Id = 2,
+                    Categoria_nombre = "Categoria 2"
+                }
+            });
+
+            var controller = new CategoriaController(mockService.Object);
+
+            var result = await controller.ObtenerCategorias();
+
+            Assert.IsType<OkObjectResult>(result);
+        }
+
+        [Fact]
+        public async Task EliminarCategoria()
+        {
+            mockService.Setup(c => c.Eliminar(1)).ReturnsAsync(new CategoriaDTO
+            {
+                Id = 1,
+                Categoria_nombre = "Categoria 1"
+            });
+
+            var controller = new CategoriaController(mockService.Object);
+
+            var result = await controller.EliminarCategoria(1);
+
+            Assert.IsType<OkObjectResult>(result);
+        }
+
     }
 }
