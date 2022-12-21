@@ -17,7 +17,7 @@ namespace Productos.Services
             this.mapper = mapper;
         }
 
-        public async Task<CategoriaDTO> Actualizar(CrearCategoriaDTO categoriaDTO, int id)
+        public async Task<CategoriaDTO> ActualizarCategoriaPrueba(CrearCategoriaDTO categoriaDTO, int id)
         {
             var categoria = mapper.Map<Categoria>(categoriaDTO);
 
@@ -62,7 +62,6 @@ namespace Productos.Services
         public async Task<CategoriaDTO> ObtenerCategoria(int id)
         {
             var categoria = await contexto.Categorias.FirstOrDefaultAsync(c => c.Id == id);
-
 
             return mapper.Map<CategoriaDTO>(categoria);
         }

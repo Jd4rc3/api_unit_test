@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Productos.Controllers;
 using Productos.DTOs.Categorias;
+using Productos.DTOs.SubCategorias;
 using Productos.Services.Api;
 using Productos.Utilities;
 
@@ -59,10 +60,12 @@ namespace WebApi.Test.Controllers
                 Categoria_nombre = "Categoria 1"
             };
 
-            mockService.Setup(x => x.Actualizar(dto, 1)).ReturnsAsync(new CrearCategoriaDTO
+            mockService.Setup(x => x.ActualizarCategoriaPrueba(dto, 1)).ReturnsAsync(new CategoriaDTO
             {
-                Categoria_nombre = "Categoria 1"
-            });
+                Id = 1,
+                Categoria_nombre = "Categoria 1",
+                Subcategorias = new List<SubCategoriaDTO>()
+            }); ;
 
             var controller = new CategoriaController(mockService.Object);
 
@@ -71,6 +74,7 @@ namespace WebApi.Test.Controllers
             var okResult = result as OkObjectResult;
 
             Assert.Equal(1, (okResult.Value as CategoriaDTO).Id);
+            Assert.Equal(200, okResult.StatusCode);
             Assert.IsType<OkObjectResult>(result);
         }
     }
