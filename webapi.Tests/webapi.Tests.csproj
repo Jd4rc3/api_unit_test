@@ -26,4 +26,8 @@
     <ProjectReference Include="..\Productos\Productos.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Servicios\" />
+  </ItemGroup>
+
 </Project>
