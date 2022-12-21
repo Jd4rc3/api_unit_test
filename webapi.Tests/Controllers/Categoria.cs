@@ -50,5 +50,28 @@ namespace WebApi.Test.Controllers
             Assert.Equal(1, (createdResult.Value as CategoriaDTO).Id);
             Assert.IsType<CreatedResult>(result);
         }
+
+        [Fact]
+        public async Task ActualizarCategoria()
+        {
+            var dto = new CrearCategoriaDTO
+            {
+                Categoria_nombre = "Categoria 1"
+            };
+
+            mockService.Setup(x => x.Actualizar(dto, 1)).ReturnsAsync(new CrearCategoriaDTO
+            {
+                Categoria_nombre = "Categoria 1"
+            });
+
+            var controller = new CategoriaController(mockService.Object);
+
+            var result = await controller.ActualizarCategoria(dto, 1);
+
+            var okResult = result as OkObjectResult;
+
+            Assert.Equal(1, (okResult.Value as CategoriaDTO).Id);
+            Assert.IsType<OkObjectResult>(result);
+        }
     }
 }
