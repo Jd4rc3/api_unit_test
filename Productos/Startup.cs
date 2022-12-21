@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Productos.Services;
 using Productos.Services.Api;
+using System.Text.Json.Serialization;
 
 namespace Productos
 {
@@ -15,7 +16,7 @@ namespace Productos
 
         public void ConfigurationService(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(opt => opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddScoped<ICategoriaApi, CategoriaService>();

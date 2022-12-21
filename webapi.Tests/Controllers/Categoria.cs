@@ -31,10 +31,7 @@ namespace WebApi.Test.Controllers
         [Fact]
         public async Task CrearCategoria()
         {
-            var dto = new CrearCategoriaDTO
-            {
-                Categoria_nombre = "Categoria 1"
-            };
+            var dto = It.IsAny<CrearCategoriaDTO>();
 
             mockService.Setup(x => x.Crear(dto)).ReturnsAsync(new CategoriaDTO
             {
@@ -132,6 +129,5 @@ namespace WebApi.Test.Controllers
 
             Assert.IsType<OkObjectResult>(result);
         }
-
     }
 }
