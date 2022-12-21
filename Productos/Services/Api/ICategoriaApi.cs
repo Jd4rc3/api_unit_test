@@ -4,7 +4,7 @@ namespace Productos.Services.Api
 {
     public interface ICategoriaApi
     {
-        Task<CategoriaDTO> Actualizar(CrearCategoriaDTO categoriaDTO);
+        Task<CategoriaDTO> Actualizar(CrearCategoriaDTO categoriaDTO, int Id);
 
         Task<CategoriaDTO> Crear(CrearCategoriaDTO crearCategoriaDTO);
 

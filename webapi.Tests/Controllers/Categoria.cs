@@ -45,9 +45,10 @@ namespace WebApi.Test.Controllers
 
             var result = await controller.CrearCategoria(dto);
 
-            var okResult = result as OkObjectResult;
+            var createdResult = result as CreatedResult;
 
-            Assert.Equal(1, (okResult.Value as CategoriaDTO).Id);
+            Assert.Equal(1, (createdResult.Value as CategoriaDTO).Id);
+            Assert.IsType<CreatedResult>(result);
         }
     }
 }
