@@ -30,7 +30,7 @@ namespace Productos.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         public async Task<ActionResult> ActualizarCategoria([FromBody] CrearCategoriaDTO categoria, [FromRoute] int id)
         {
-            var categoriaActualizada = await categoriaApi.ActualizarCategoriaPrueba(categoria, id);
+            var categoriaActualizada = await categoriaApi.Actualizar(categoria, id);
 
             return Ok(categoriaActualizada);
         }

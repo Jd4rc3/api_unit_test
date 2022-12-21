@@ -17,7 +17,7 @@ namespace Productos.Services
             this.mapper = mapper;
         }
 
-        public async Task<CategoriaDTO> ActualizarCategoriaPrueba(CrearCategoriaDTO categoriaDTO, int id)
+        public async Task<CategoriaDTO> Actualizar(CrearCategoriaDTO categoriaDTO, int id)
         {
             var categoria = mapper.Map<Categoria>(categoriaDTO);
 

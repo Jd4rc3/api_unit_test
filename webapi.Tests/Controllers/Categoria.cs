@@ -60,7 +60,7 @@ namespace WebApi.Test.Controllers
                 Categoria_nombre = "Categoria 1"
             };
 
-            mockService.Setup(x => x.ActualizarCategoriaPrueba(dto, 1)).ReturnsAsync(new CategoriaDTO
+            mockService.Setup(x => x.Actualizar(dto, 1)).ReturnsAsync(new CategoriaDTO
             {
                 Id = 1,
                 Categoria_nombre = "Categoria 1",
