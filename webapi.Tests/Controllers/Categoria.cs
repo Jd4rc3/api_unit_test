@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Productos.Controllers;
 using Productos.DTOs.Categorias;
-using Productos.DTOs.SubCategorias;
 using Productos.Services.Api;
 using Productos.Utilities;
+using webapi.Tests.Controllers.Helpers;
 
 namespace WebApi.Test.Controllers
 {
@@ -33,11 +33,7 @@ namespace WebApi.Test.Controllers
         {
             var dto = It.IsAny<CrearCategoriaDTO>();
 
-            mockService.Setup(x => x.Crear(dto)).ReturnsAsync(new CategoriaDTO
-            {
-                Id = 1,
-                Categoria_nombre = "Categoria 1"
-            });
+            mockService.Setup(x => x.Crear(dto)).ReturnsAsync(Build.Categoria());
 
             var controller = new CategoriaController(mockService.Object);
 
@@ -52,17 +48,9 @@ namespace WebApi.Test.Controllers
         [Fact]
         public async Task ActualizarCategoria()
         {
-            var dto = new CrearCategoriaDTO
-            {
-                Categoria_nombre = "Categoria 1"
-            };
+            var dto = It.IsAny<CrearCategoriaDTO>();
 
-            mockService.Setup(x => x.Actualizar(dto, 1)).ReturnsAsync(new CategoriaDTO
-            {
-                Id = 1,
-                Categoria_nombre = "Categoria 1",
-                Subcategorias = new List<SubCategoriaDTO>()
-            });
+            mockService.Setup(x => x.Actualizar(dto, 1)).ReturnsAsync(Build.Categoria());
 
             var controller = new CategoriaController(mockService.Object);
 
@@ -77,11 +65,7 @@ namespace WebApi.Test.Controllers
 
         public async Task ObtenerCategoria()
         {
-            mockService.Setup(c => c.ObtenerCategoria(1)).ReturnsAsync(new CategoriaDTO
-            {
-                Id = 1,
-                Categoria_nombre = "Categoria 1"
-            });
+            mockService.Setup(c => c.ObtenerCategoria(1)).ReturnsAsync(Build.Categoria());
 
             var controller = new CategoriaController(mockService.Object);
 
@@ -93,19 +77,7 @@ namespace WebApi.Test.Controllers
         [Fact]
         public async Task ObtenerCategorias()
         {
-            mockService.Setup(c => c.ObtenerCategorias()).ReturnsAsync(new List<CategoriaDTO>
-            {
-                new CategoriaDTO
-                {
-                    Id = 1,
-                    Categoria_nombre = "Categoria 1"
-                },
-                new CategoriaDTO
-                {
-                    Id = 2,
-                    Categoria_nombre = "Categoria 2"
-                }
-            });
+            mockService.Setup(c => c.ObtenerCategorias()).ReturnsAsync(Build.Categorias());
 
             var controller = new CategoriaController(mockService.Object);
 
@@ -117,11 +89,7 @@ namespace WebApi.Test.Controllers
         [Fact]
         public async Task EliminarCategoria()
         {
-            mockService.Setup(c => c.Eliminar(1)).ReturnsAsync(new CategoriaDTO
-            {
-                Id = 1,
-                Categoria_nombre = "Categoria 1"
-            });
+            mockService.Setup(c => c.Eliminar(1)).ReturnsAsync(Build.Categoria());
 
             var controller = new CategoriaController(mockService.Object);
 
