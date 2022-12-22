@@ -27,6 +27,7 @@ namespace webapi.Tests.Controllers
             this.mapper = this.configuration.CreateMapper();
         }
 
+        [Fact]
         public async Task CrearSubCategoria()
         {
             var dto = It.IsAny<CrearSubCategoriaDTO>();
@@ -47,6 +48,7 @@ namespace webapi.Tests.Controllers
             Assert.IsType<CreatedResult>(result);
         }
 
+        [Fact]
         public async Task ActualizaSubCategoria()
         {
             var dto = new CrearSubCategoriaDTO
