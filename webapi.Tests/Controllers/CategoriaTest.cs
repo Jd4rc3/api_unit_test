@@ -9,7 +9,7 @@ using webapi.Tests.Controllers.Helpers;
 
 namespace WebApi.Test.Controllers
 {
-    public class Categoria
+    public class CategoriaTest
     {
         private readonly MockRepository mockRepository;
 
@@ -19,7 +19,7 @@ namespace WebApi.Test.Controllers
 
         private IConfigurationProvider configuration;
 
-        public Categoria()
+        public CategoriaTest()
         {
             this.mockRepository = new MockRepository(MockBehavior.Strict);
 

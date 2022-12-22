@@ -19,6 +19,9 @@ namespace Productos.Services
 
         public async Task<CategoriaDTO> Actualizar(CrearCategoriaDTO categoriaDTO, int id)
         {
+            var existeCategoria = await contexto.Categorias.AnyAsync(c => c.Id == id);
+            if (existeCategoria == false) return null;
+
             var categoria = mapper.Map<Categoria>(categoriaDTO);
 
             categoria.Id = id;

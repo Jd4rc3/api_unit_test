@@ -5,13 +5,17 @@ namespace Productos
 {
     public class Contexto : DbContext
     {
+        public Contexto()
+        {
+        }
+
         public Contexto(DbContextOptions options) : base(options)
         {
         }
 
-        public DbSet<Categoria> Categorias { get; set; }
+        public virtual DbSet<Categoria> Categorias { get; set; }
 
-        public DbSet<Subcategoria> Subcategorias { get; set; }
+        public virtual DbSet<Subcategoria> Subcategorias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

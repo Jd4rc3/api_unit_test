@@ -32,6 +32,8 @@ namespace Productos.Controllers
         {
             var categoriaActualizada = await categoriaApi.Actualizar(categoria, id);
 
+            if (categoriaActualizada == null) return NotFound("Categoria no encontrada");
+
             return Ok(categoriaActualizada);
         }
 

@@ -8,7 +8,7 @@ using Productos.Utilities;
 
 namespace webapi.Tests.Controllers
 {
-    public class SubCategoria
+    public class SubCategoriaTest
     {
         private readonly MockRepository mockRepository;
 
@@ -18,7 +18,7 @@ namespace webapi.Tests.Controllers
 
         private IConfigurationProvider configuration;
 
-        public SubCategoria()
+        public SubCategoriaTest()
         {
             this.mockRepository = new MockRepository(MockBehavior.Strict);
 
